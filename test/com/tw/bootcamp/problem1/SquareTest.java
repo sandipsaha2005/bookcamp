@@ -12,6 +12,8 @@ public class SquareTest {
         assertEquals(16, area);
     }
 
+
+
     @Test
     void shouldCalculateFindPerimeter() {
         Rectangle square = Rectangle.createSquare(4);

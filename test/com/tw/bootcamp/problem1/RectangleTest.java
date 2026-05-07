@@ -13,10 +13,19 @@ class RectangleTest {
         assertEquals(4, area);
     }
 
+
     @Test
     void shouldCalculatePerimeter() {
         Rectangle rectangle = Rectangle.createRectangle(3, 4);
         double perimeter = rectangle.calculatePerimeter();
-        assertEquals(14,perimeter);
+        assertEquals(14, perimeter);
+    }
+
+    @Test
+    void shouldThrowErrorIfNegativeValuesAreGiven() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Rectangle.createRectangle(-3, 4);
+        });
+        assertEquals("Negative Values Are Not Allowed",exception.getMessage());
     }
 }

@@ -11,6 +11,9 @@ public class Rectangle  {
 
 
     public static Rectangle createRectangle(double length, double width) {
+        if(length < 0 || width < 0) {
+            throw new IllegalArgumentException("Negative Values Are Not Allowed");
+        }
         return new Rectangle(length, width);
     }
 
