@@ -9,8 +9,16 @@ public final class Chance {
         this.possibility = possibility;
     }
 
-    public Chance ofNot() {
+    public Chance not() {
         return new Chance(1 - possibility);
+    }
+
+    public Chance and(Chance o) {
+        return new Chance(o.possibility * possibility);
+    }
+
+    public Chance or(Chance o) {
+        return (this.not().and( o.not())).not();
     }
 
     public static Chance of(double value) {

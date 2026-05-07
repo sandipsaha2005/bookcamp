@@ -12,9 +12,9 @@ public class ChanceTest {
     }
 
     @Test
-    void shouldRepresentChanceOfNotGettingTails() {
+    void shouldRepresentChanceNotGettingTails() {
         Chance chance = Chance.of(0.3);
-        assertEquals(Chance.of(0.7), chance.ofNot());
+        assertEquals(Chance.of(0.7), chance.not());
     }
 
     @Test
@@ -24,8 +24,26 @@ public class ChanceTest {
     }
 
     @Test
+    void shouldCreateChanceForGetting3OnADice() {
+        Chance chance = Chance.of(0.1666666667);
+        assertEquals(Chance.of(0.1666666667), chance);
+    }
+
+    @Test
     void shouldCreateChanceForTwoCoins() {
-        Chance chance = Chance.of(0.75);
+        Chance chance1 = Chance.of(0.50);
+        Chance chance2 = Chance.of(0.50);
+
+        Chance chance = chance1.and(chance2);
+        assertEquals(Chance.of(0.25), chance);
+    }
+
+    @Test
+    void shouldGetChangeOfGettingTailsInAtleastOneCoin() {
+        Chance chance1 = Chance.of(0.50);
+        Chance chance2 = Chance.of(0.50);
+
+        Chance chance = chance1.or(chance2);
         assertEquals(Chance.of(0.75), chance);
     }
 }
