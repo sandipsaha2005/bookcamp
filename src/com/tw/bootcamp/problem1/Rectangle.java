@@ -1,19 +1,21 @@
 package com.tw.bootcamp.problem1;
 
-public class Rectangle {
+public class Rectangle implements Quadrilaterals {
     private final double length;
-    private final double breadth;
+    private final double width;
 
-    public Rectangle(double length, double breadth) {
+    public Rectangle(double length, double width) {
         this.length = length;
-        this.breadth = breadth;
+        this.width = width;
     }
 
-    public double findArea() {
-        return length * breadth;
-    }
-
+    @Override
     public double findPerimeter() {
-        return 2 * (length + breadth);
+        return 2 * (length + width);
+    }
+
+    @Override
+    public double findArea() {
+        return length * width;
     }
 }
