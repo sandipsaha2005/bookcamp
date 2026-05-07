@@ -21,8 +21,8 @@ public final class Chance {
         return (this.not().and( o.not())).not();
     }
 
-    public static Chance of(double value) {
-        if (value < 0 || value > 1) throw new IllegalArgumentException("Chance should be between 0 to 1");
+    public static Chance of(double value) throws ImpossibleProbabilityCreation {
+        if (value < 0 || value > 1) throw new ImpossibleProbabilityCreation("Chance should be between 0 to 1");
         return new Chance(value);
     }
 

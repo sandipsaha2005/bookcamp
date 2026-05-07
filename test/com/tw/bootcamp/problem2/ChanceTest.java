@@ -6,31 +6,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ChanceTest {
     @Test
-    void shouldRepresentChanceOfGettingTails() {
+    void shouldRepresentChanceOfGettingTails() throws ImpossibleProbabilityCreation {
         Chance chance = Chance.of(0.3);
         assertEquals(Chance.of(0.3), chance);
     }
 
     @Test
-    void shouldRepresentChanceNotGettingTails() {
+    void shouldRepresentChanceOfNotGettingTails() throws ImpossibleProbabilityCreation {
         Chance chance = Chance.of(0.3);
         assertEquals(Chance.of(0.7), chance.not());
     }
 
     @Test
     void shouldNotCreateChanceWithInvalidValue() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Chance.of(-1));
+        ImpossibleProbabilityCreation exception = assertThrows(ImpossibleProbabilityCreation.class, () -> Chance.of(-1));
         assertEquals("Chance should be between 0 to 1",exception.getMessage());
     }
 
     @Test
-    void shouldCreateChanceForGetting3OnADice() {
+    void shouldCreateChanceForGetting3OnADice() throws ImpossibleProbabilityCreation {
         Chance chance = Chance.of(0.1666666667);
         assertEquals(Chance.of(0.1666666667), chance);
     }
 
     @Test
-    void shouldCreateChanceForTwoCoins() {
+    void shouldCreateChanceForTwoCoins() throws ImpossibleProbabilityCreation {
         Chance chance1 = Chance.of(0.50);
         Chance chance2 = Chance.of(0.50);
 
@@ -39,7 +39,7 @@ public class ChanceTest {
     }
 
     @Test
-    void shouldGetChangeOfGettingTailsInAtleastOneCoin() {
+    void shouldGetChangeOfGettingTailsInAtLeastOneCoin() throws ImpossibleProbabilityCreation {
         Chance chance1 = Chance.of(0.50);
         Chance chance2 = Chance.of(0.50);
 
