@@ -7,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangleTest {
 
     @Test
-    void shouldCalculateFindArea() {
-        Rectangle rectangle = new Rectangle(2, 2);
-        double area = rectangle.findArea();
+    void shouldCalculateArea() {
+        Rectangle rectangle = Rectangle.createRectangle(2, 2);
+        double area = rectangle.calculateArea();
         assertEquals(4, area);
     }
 
     @Test
-    void shouldCalculateFindPerimeter() {
-        Rectangle rectangle = new Rectangle(3, 4);
-        double perimeter = rectangle.findPerimeter();
+    void shouldCalculatePerimeter() {
+        Rectangle rectangle = Rectangle.createRectangle(3, 4);
+        double perimeter = rectangle.calculatePerimeter();
         assertEquals(14,perimeter);
     }
 }
