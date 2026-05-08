@@ -8,34 +8,43 @@ class LengthTest {
 
     @Test
     void shouldCreateUnitWithInch() throws InvalidMeasureValue {
-        Length inch = Length.ofInch(1);
-        assertEquals(Length.ofInch(1), inch);
+        Length inch = Length.of(1, LengthUnits.INCH);
+        assertEquals(Length.of(1, LengthUnits.INCH), inch);
     }
 
     @Test
     void shouldCreateUnitWithFeet() throws InvalidMeasureValue {
-        Length feet = Length.ofFeet(2);
-        assertEquals(Length.ofFeet(2), feet);
+        Length feet = Length.of(2, LengthUnits.FEET);
+        assertEquals(Length.of(2, LengthUnits.FEET), feet);
     }
 
     @Test
     void shouldCreateUnitWithCentimeter() throws InvalidMeasureValue {
-        Length centimeter = Length.ofCentimeter(1);
-        assertEquals(Length.ofCentimeter(1), centimeter);
+        Length centimeter = Length.of(1, LengthUnits.CM);
+        assertEquals(Length.of(1, LengthUnits.CM), centimeter);
     }
 
     @Test
     void shouldThrowErrorIfNegativeValueIsGivenAsLength() {
-        InvalidMeasureValue invalidMeasureValue = assertThrows(InvalidMeasureValue.class, () -> Length.ofCentimeter(-1));
+        InvalidMeasureValue invalidMeasureValue = assertThrows(InvalidMeasureValue.class, () -> Length.of(-1, LengthUnits.CM));
         assertEquals("Length can't be negative", invalidMeasureValue.getMessage());
     }
 
     @Test
     void shouldBeAbleToAddToInches() throws InvalidMeasureValue {
-        Length inch1 = Length.ofInch(2);
-        Length inch2 = Length.ofInch(2);
+        Length inch1 = Length.of(2, LengthUnits.INCH);
+        Length inch2 = Length.of(2, LengthUnits.INCH);
         Length sum = inch1.add(inch2);
+        assertEquals(Length.of(4, LengthUnits.INCH), sum);
+    }
 
-        assertEquals(Length.ofInch(4), sum);
+    @Test
+    void shouldBeAbleToAddInchAndCm() throws InvalidMeasureValue {
+        Length inch = Length.of(2, LengthUnits.INCH);
+        Length cm = Length.of(2.5, LengthUnits.CM);
+        Length sum = inch.add(cm);
+
+        assertEquals(Length.of(3, LengthUnits.INCH), sum);
+
     }
 }

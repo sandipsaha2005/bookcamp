@@ -11,17 +11,10 @@ public class Length {
         this.value = value;
     }
 
-    public static Length ofInch(double value) throws InvalidMeasureValue {
-        return  ofCentimeter(value * 2.5);
-    }
+    public static Length of(double value, LengthUnits unit) throws InvalidMeasureValue {
+        if (value < 0) throw new InvalidMeasureValue("Length can't be negative");
 
-    public static Length ofFeet(double value) throws InvalidMeasureValue {
-        return ofInch(value * 12);
-    }
-
-    public static Length ofCentimeter(double value) throws InvalidMeasureValue {
-        if(value < 0) throw new InvalidMeasureValue("Length can't be negative");
-        return new Length(value);
+        return new Length(value * unit.toBase());
     }
 
     @Override
@@ -37,6 +30,6 @@ public class Length {
     }
 
     public Length add(Length o) throws InvalidMeasureValue {
-        return Length.ofCentimeter(o.value + value);
+        return Length.of(o.value + value, LengthUnits.CM);
     }
 }
