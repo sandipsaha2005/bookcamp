@@ -35,4 +35,8 @@ public class Length {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    public Length add(Length o) throws InvalidMeasureValue {
+        return Length.ofCentimeter(o.value + value);
+    }
 }
