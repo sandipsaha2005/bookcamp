@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LengthTest {
 
     @Test
-    void shouldCompareFeetAndInches() throws InvalidLength {
+    void shouldCompareFeetAndInches() throws InvalidMeasureValue {
         Feet feet = Feet.of(1);
         Inch inch = new Inch(12);
         assertEquals(feet.convertToBase(), inch.convertToBase());
@@ -15,8 +15,8 @@ public class LengthTest {
 
     @Test
     void shouldThrowErrorIfNegativeLengthIsGiven() {
-        InvalidLength invalidLength = assertThrows(InvalidLength.class, () -> Feet.of(-1));
-        assertEquals("Length Can't be negative value",invalidLength.getMessage());
+        InvalidMeasureValue invalidMeasureValue = assertThrows(InvalidMeasureValue.class, () -> Feet.of(-1));
+        assertEquals("Length Can't be negative value", invalidMeasureValue.getMessage());
     }
 
     @Test

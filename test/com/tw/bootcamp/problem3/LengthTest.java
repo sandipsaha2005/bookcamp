@@ -1,4 +1,5 @@
 package com.tw.bootcamp.problem3;
+import com.tw.bootcamp.problem3scratch.InvalidMeasureValue;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,20 +7,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class LengthTest {
 
     @Test
-    void shouldCreateUnitWithInch() {
+    void shouldCreateUnitWithInch() throws InvalidMeasureValue {
         Length inch = Length.ofInch(1);
         assertEquals(Length.ofInch(1), inch);
     }
 
     @Test
-    void shouldCreateUnitWithFeet() {
+    void shouldCreateUnitWithFeet() throws InvalidMeasureValue {
         Length feet = Length.ofFeet(2);
         assertEquals(Length.ofFeet(2), feet);
     }
 
     @Test
-    void shouldCreateUnitWithCentimeter() {
+    void shouldCreateUnitWithCentimeter() throws InvalidMeasureValue {
         Length centimeter = Length.ofCentimeter(1);
         assertEquals(Length.ofCentimeter(1), centimeter);
+    }
+
+    @Test
+    void shouldThrowErrorIfNegativeValueIsGivenAsLength() {
+        InvalidMeasureValue invalidMeasureValue = assertThrows(InvalidMeasureValue.class, () -> Length.ofCentimeter(-1));
+        assertEquals("Length can't be negative", invalidMeasureValue.getMessage());
+
     }
 }

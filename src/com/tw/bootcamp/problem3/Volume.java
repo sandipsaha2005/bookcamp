@@ -1,5 +1,7 @@
 package com.tw.bootcamp.problem3;
 
+import com.tw.bootcamp.problem3scratch.InvalidMeasureValue;
+
 import java.util.Objects;
 
 public class Volume {
@@ -9,11 +11,12 @@ public class Volume {
         this.value = value;
     }
 
-    public static Volume ofGallon(double value) {
+    public static Volume ofGallon(double value) throws InvalidMeasureValue {
         return ofLiter(value * 3.78);
     }
 
-    public static Volume ofLiter(double value) {
+    public static Volume ofLiter(double value) throws InvalidMeasureValue {
+        if(value < 0) throw new InvalidMeasureValue("Volume can't be negative");
         return new Volume(value);
     }
 

@@ -7,9 +7,9 @@ public class Feet implements Length {
         this.value = value;
     }
 
-    public static Feet of(double value) throws InvalidLength {
+    public static Feet of(double value) throws InvalidMeasureValue {
         if(value < 0) {
-            throw new InvalidLength("Length Can't be negative value");
+            throw new InvalidMeasureValue("Length Can't be negative value");
         }
 
         return new Feet(value);
