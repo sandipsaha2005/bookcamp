@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
-    void shouldBeAbleToParkCar() {
+    void shouldBeAbleToParkACar() {
         ParkingLot parkingLot = new ParkingLot(3);
         assertTrue(parkingLot.park(new Car("c1")));
     }

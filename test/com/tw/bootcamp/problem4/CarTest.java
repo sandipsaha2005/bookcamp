@@ -9,7 +9,6 @@ public class CarTest {
     @Test
     void shouldCreateCarObject() {
         Car c1 = new Car("c1");
-
         assertEquals("c1", c1.id());
     }
 }
