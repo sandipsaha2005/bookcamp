@@ -24,11 +24,23 @@ public class Volume {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Volume volume = (Volume) o;
-        return Double.compare(value, volume.value) == 0;
+
+        return Math.abs(value - volume.value) <= 0.0001;
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Volume{" +
+                "value=" + value +
+                '}';
+    }
+
+    public Volume add(Volume o) throws InvalidMeasureValue {
+        return ofLiter(value + o.value);
     }
 }

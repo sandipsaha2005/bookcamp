@@ -35,6 +35,7 @@ class LengthTest {
         Length inch1 = Length.of(2, LengthUnits.INCH);
         Length inch2 = Length.of(2, LengthUnits.INCH);
         Length sum = inch1.add(inch2);
+
         assertEquals(Length.of(4, LengthUnits.INCH), sum);
     }
 

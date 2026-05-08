@@ -5,7 +5,6 @@ public enum LengthUnits {
     FEET(30),
     INCH(2.5),
     MILLI(0.1);
-
     private final double value;
 
     LengthUnits(double value) {

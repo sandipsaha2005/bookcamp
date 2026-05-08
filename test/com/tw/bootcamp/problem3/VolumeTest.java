@@ -18,4 +18,13 @@ class VolumeTest {
         InvalidMeasureValue invalidMeasureValue = assertThrows(InvalidMeasureValue.class, () -> Volume.ofGallon(-1));
         assertEquals("Volume can't be negative", invalidMeasureValue.getMessage());
     }
+
+    @Test
+    void shouldBeAbleToAddGallonAndLiters() throws InvalidMeasureValue {
+        Volume gallon = Volume.ofGallon(1);
+        Volume liter = Volume.ofLiter(1);
+        Volume sum = gallon.add(liter);
+
+        assertEquals(Volume.ofLiter(4.78), sum);
+    }
 }
