@@ -11,14 +11,12 @@ public class Volume {
         this.value = value;
     }
 
-    public static Volume ofGallon(double value) throws InvalidMeasureValue {
-        return ofLiter(value * 3.78);
+    public static Volume of(double value, VolumeUnits unit) throws InvalidMeasureValue {
+        if(value < 0) throw new InvalidMeasureValue("Volume can't be negative");
+        return new Volume(value * unit.toBase());
+
     }
 
-    public static Volume ofLiter(double value) throws InvalidMeasureValue {
-        if(value < 0) throw new InvalidMeasureValue("Volume can't be negative");
-        return new Volume(value);
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -41,6 +39,6 @@ public class Volume {
     }
 
     public Volume add(Volume o) throws InvalidMeasureValue {
-        return ofLiter(value + o.value);
+        return of(value + o.value, VolumeUnits.LITER);
     }
 }
