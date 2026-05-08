@@ -1,4 +1,4 @@
-package com.tw.bootcamp.problem3;
+package com.tw.bootcamp.problem3scratch;
 
 public class InvalidLength extends Throwable {
     public InvalidLength(String message) {

@@ -1,6 +1,6 @@
-package com.tw.bootcamp.problem3;
+package com.tw.bootcamp.problem3scratch;
 
-public class Inch implements Unit {
+public class Inch implements Length {
     private final double value;
 
     public Inch(double value) {

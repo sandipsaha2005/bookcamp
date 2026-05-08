@@ -1,28 +1,25 @@
 package com.tw.bootcamp.problem3;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LengthTest {
+class LengthTest {
+
     @Test
-    void shouldCompareFeetAndInches() {
-        Feet feet = new Feet(1);
-        Inch inch = new Inch(12);
-        assertEquals(feet.convertToBase(), inch.convertToBase());
+    void shouldCreateUnitWithInch() {
+        Length inch = Length.ofInch(1);
+        assertEquals(Length.ofInch(1), inch);
     }
 
     @Test
-    void shouldCompareInchAndCentimeter() {
-        Centimeter cen = new Centimeter(5);
-        Inch inch = new Inch(2);
-        assertEquals(cen.convertToBase(), inch.convertToBase());
+    void shouldCreateUnitWithFeet() {
+        Length feet = Length.ofFeet(2);
+        assertEquals(Length.ofFeet(2), feet);
     }
 
     @Test
-    void shouldCompareMillimeterAndCentimeter() {
-        Centimeter cen = new Centimeter(1);
-        Millimeter millimeter = new Millimeter(10);
-        assertEquals(cen.convertToBase(), millimeter.convertToBase());
+    void shouldCreateUnitWithCentimeter() {
+        Length centimeter = Length.ofCentimeter(1);
+        assertEquals(Length.ofCentimeter(1), centimeter);
     }
 }

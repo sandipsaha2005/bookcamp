@@ -1,6 +1,6 @@
-package com.tw.bootcamp.problem3;
+package com.tw.bootcamp.problem3scratch;
 
-public class Millimeter implements Unit {
+public class Millimeter implements Length {
     private final double value;
 
     public Millimeter(double value) {
