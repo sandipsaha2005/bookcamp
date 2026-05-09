@@ -17,16 +17,22 @@ public class Bag {
     public boolean add(BALL ball) {
         if (count >= MAX_CAPACITY) return false;
         int ballCount = getBallCount(ball);
-        int greenBallCount = getBallCount(BALL.GREEN);
         if (isGreenBallAddable(ball, ballCount)) return false;
-        if(isRedBallAddable(ball, greenBallCount, ballCount)) return false;
+        if (isRedBallAddable(ball, ballCount)) return false;
+        if (ball == BALL.YELLOW && isYellowBallAddable()) return false;
 
         count++;
         storage.put(ball, ballCount + 1);
         return true;
     }
 
-    private static boolean isRedBallAddable(BALL ball, int greenBallCount, int ballCount) {
+    private boolean isYellowBallAddable() {
+        int yellowBallCount = getBallCount(BALL.YELLOW);
+        return yellowBallCount >= count * 0.4;
+    }
+
+    private boolean isRedBallAddable(BALL ball, int ballCount) {
+        int greenBallCount = getBallCount(BALL.GREEN);
         return ball == BALL.RED && greenBallCount * 2 >= ballCount;
     }
 

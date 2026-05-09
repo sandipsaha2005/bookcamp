@@ -1,6 +1,5 @@
 package com.tw.bootcamp.problem5;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
@@ -9,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BagTest {
 
-    void  fillBag(Bag bag) {
-        IntStream.range(0, 12).forEach((i) -> bag.add(BALL.BLUE));
+    void fillBag(Bag bag, int range) {
+        IntStream.range(0, range).forEach((i) -> bag.add(BALL.BLUE));
     }
 
     @Test
@@ -22,7 +21,7 @@ public class BagTest {
     @Test
     void shouldReturnFalseIfBagCapacityExceeds() {
         Bag bag = new Bag();
-        fillBag(bag);
+        fillBag(bag, 12);
         assertFalse(bag.add(BALL.BLUE));
     }
 
@@ -43,4 +42,15 @@ public class BagTest {
         bag.add(BALL.RED);
         assertFalse(bag.add(BALL.RED));
     }
+
+    @Test
+    void yellowShouldNotBeMoreThan40Percent() {
+        Bag bag = new Bag();
+        fillBag(bag, 3);
+        bag.add(BALL.YELLOW);
+        bag.add(BALL.YELLOW);
+        assertFalse(bag.add(BALL.YELLOW));
+    }
+
+
 }
