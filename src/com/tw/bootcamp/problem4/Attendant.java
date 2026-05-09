@@ -3,10 +3,10 @@ package com.tw.bootcamp.problem4;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLotRegistry {
+public class Attendant {
     private final Map<String, ParkingLot> registry;
 
-    public ParkingLotRegistry() {
+    public Attendant() {
         this.registry = new HashMap<>();
     }
 

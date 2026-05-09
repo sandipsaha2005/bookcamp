@@ -12,7 +12,6 @@ public class ParkingLot {
         storage = new ArrayList<>();
     }
 
-
     public boolean park(Car car) {
         return storage.add(car);
     }

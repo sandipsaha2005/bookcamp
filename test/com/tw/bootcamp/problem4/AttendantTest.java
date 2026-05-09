@@ -1,17 +1,16 @@
 package com.tw.bootcamp.problem4;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class ParkingLotRegistryTest {
-    ParkingLotRegistry registry;
+public class AttendantTest {
+    Attendant registry;
 
     @BeforeEach
     void init() {
-        registry = new ParkingLotRegistry();
+        registry = new Attendant();
     }
 
     @Test
