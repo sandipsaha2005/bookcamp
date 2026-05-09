@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem5;
 
-public enum COLORS {
+public enum BALL {
     BLUE,
     GREEN,
     RED,
