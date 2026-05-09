@@ -15,29 +15,35 @@ public class Bag {
     }
 
     public boolean add(BALL ball) {
-        if (count >= MAX_CAPACITY) return false;
         int ballCount = getBallCount(ball);
-        if (isGreenBallAddable(ball, ballCount)) return false;
-        if (isRedBallAddable(ball, ballCount)) return false;
-        if (ball == BALL.YELLOW && isYellowBallAddable()) return false;
+        if (count >= MAX_CAPACITY || !isAddable(ball, ballCount)) return false;
 
         count++;
         storage.put(ball, ballCount + 1);
         return true;
     }
 
+    private boolean isAddable(BALL ball, int ballCount) {
+        return switch (ball) {
+            case BALL.GREEN -> isGreenBallAddable(ball, ballCount);
+            case BALL.RED -> isRedBallAddable(ball, ballCount);
+            case BALL.YELLOW -> isYellowBallAddable();
+            default -> true;
+        };
+    }
+
     private boolean isYellowBallAddable() {
         int yellowBallCount = getBallCount(BALL.YELLOW);
-        return yellowBallCount >= count * 0.4;
+        return yellowBallCount < count * 0.4;
     }
 
     private boolean isRedBallAddable(BALL ball, int ballCount) {
         int greenBallCount = getBallCount(BALL.GREEN);
-        return ball == BALL.RED && greenBallCount * 2 >= ballCount;
+        return greenBallCount * 2 > ballCount;
     }
 
     private boolean isGreenBallAddable(BALL ball, int ballCount) {
-        return ball == BALL.GREEN && ballCount >= GREEN_BALL_LIMIT;
+        return  ballCount < GREEN_BALL_LIMIT;
     }
 
     private int getBallCount(BALL ball) {

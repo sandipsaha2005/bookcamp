@@ -26,12 +26,28 @@ public class BagTest {
     }
 
     @Test
+    void shouldAdd3GreenBalls() {
+        Bag bag = new Bag();
+        bag.add(BALL.GREEN);
+        bag.add(BALL.GREEN);
+        assertTrue(bag.add(BALL.GREEN));
+    }
+
+    @Test
     void shouldReturnFalseIfTryToAddMoreThanThreeGreenBalls() {
         Bag bag = new Bag();
         bag.add(BALL.GREEN);
         bag.add(BALL.GREEN);
         bag.add(BALL.GREEN);
         assertFalse(bag.add(BALL.GREEN));
+    }
+
+    @Test
+    void shouldAddRedBallsDoubleOfGreenBalls() {
+        Bag bag = new Bag();
+        bag.add(BALL.GREEN);
+        bag.add(BALL.RED);
+        assertTrue(bag.add(BALL.RED));
     }
 
     @Test
@@ -44,13 +60,19 @@ public class BagTest {
     }
 
     @Test
-    void yellowShouldNotBeMoreThan40Percent() {
+    void shouldAddYellowBallsLessThan40PercentOfAllBalls() {
+        Bag bag = new Bag();
+        fillBag(bag, 3);
+        bag.add(BALL.YELLOW);
+        assertTrue(bag.add(BALL.YELLOW));
+    }
+
+    @Test
+    void yellowBallsShouldNotBeMoreThan40Percent() {
         Bag bag = new Bag();
         fillBag(bag, 3);
         bag.add(BALL.YELLOW);
         bag.add(BALL.YELLOW);
         assertFalse(bag.add(BALL.YELLOW));
     }
-
-
 }
